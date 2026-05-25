@@ -17,7 +17,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @Service
 public class SaloplayService {
 
-    private final Map<String, String> users = new ConcurrentHashMap<>();
+    private static final Map<String, String> users = new ConcurrentHashMap<>();
 
     // Partidos fijos (mock) para el proyecto
     private final List<MatchDto> matches = new ArrayList<>();
@@ -26,6 +26,7 @@ public class SaloplayService {
     private final Map<String, List<BetDto>> betsByUser = new ConcurrentHashMap<>();
 
     public SaloplayService() {
+        users.putIfAbsent("antonio", "1234");
         // Cargamos partidos de ejemplo con cuotas
         matches.add(new MatchDto(
                 1,
